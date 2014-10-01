@@ -1,0 +1,158 @@
+<script language="javascript">
+var num1=0, num2=0; 
+var mostrado=""; 
+var comprobador=0; 
+var punto=0; 
+var operador=0; 
+
+function mostrar(a){ 
+if (a=='.') {
+if (punto==0) { mostrado=mostrado+a; punto=1;  } 
+}  else { mostrado=mostrado+a; }
+document.form1.screen.value=mostrado; 
+
+if(comprobador==0){ 
+num1=parseFloat(mostrado); 
+}else if(comprobador==1){ 
+num2=parseFloat(mostrado); 
+} 
+
+}
+
+function operacion(a) {
+
+switch(a){
+case 1:
+operador=1;
+
+document.form1.screen.value="+"; 
+break; 
+case 2: 
+operador=2;
+document.form1.screen.value="-";
+break;
+case 3: 
+operador=3;
+document.form1.screen.value="*";
+break;
+case 4: 
+operador=4;
+document.form1.screen.value="/";
+break;
+}
+mostrado=""; 
+comprobador=1; 
+punto=0;
+}
+
+function resultado() {
+
+switch(operador) {
+case 1:
+document.form1.screen.value=num1+num2; 
+break; 
+case 2: 
+document.form1.screen.value=num1-num2;
+break;
+case 3:
+document.form1.screen.value=num1*num2;
+break;
+
+case 4: 
+document.form1.pantalla.value=num1/num2; 
+break; 
+default: 
+break;	
+} 
+num1=parseFloat(document.form1.pantalla.value); 
+mostrado=""; 
+} 
+function borra(){ 
+num1=0; 
+num2=0; 
+mostrado=""; 
+comprobador=0; 
+operador=0; 
+document.form1.screen.value=0; 
+
+} 
+</script>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+</head>
+<style>
+input {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+border-radius:7px;
+font-weight:bold;
+color: #333;
+padding: 4px 7px;
+border: 1px solid #D6D6D6;
+background: url(fb.png) top repeat-x;
+min-height:20px;
+cursor:pointer;
+width:100%;
+
+
+} 
+
+input:hover { 
+font-weight:bold;
+color: #000; 
+border: 1px solid #000000;
+background: url(fbx.png) bottom repeat-x;
+min-height:20px
+
+
+}
+
+</style>
+
+<body>
+<form name="form1" action="" method=""> 
+<table width="285" border="0" align="center" cellpadding="0" cellspacing="5">
+ <tr>
+   <td colspan="4"><input type="text" name="screen" id="screen" style="width:100%"></td>
+ </tr>
+ <tr>
+   <td><input type="button" name="limpia" id="limpia" value="CE"  onClick="borra()"></td>
+   <td><input type="button" name="button2" id="button2" value="--"></td>
+   <td><input type="button" name="button3" id="button3" value="--"></td>
+   <td><input type="button" name="divide" id="divide" value="/" onclick="operacion(4)"></td>
+ </tr>
+ <tr>
+   <td><input type="button" name="n7" id="n7" value="7" onClick="mostrar(7)"></td>
+   <td><input type="button" name="n8" id="n8" value="8" onClick="mostrar(8)"></td>
+   <td><input type="button" name="n9" id="n9" value="9" onClick="mostrar(9)"></td>
+   <td><input type="button" name="multiplica" id="multiplica" value="*" onclick="operacion(3)"></td>
+ </tr>
+ <tr>
+   <td><input type="button" name="nun4" id="nun4" value="4" onClick="mostrar(4)"></td>
+   <td><input type="button" name="nun5" id="nun5" value="5" onClick="mostrar(5)"></td>
+   <td><input type="button" name="nun6" id="nun6" value="6" onClick="mostrar(6)"></td>
+   <td><input type="button" name="resta" id="resta" value="-" onclick="operacion(2)"> </td>
+ </tr>
+ <tr>
+   <td><input type="button" name="nun1" id="nun1" value="1" onClick="mostrar(1)"></td>
+   <td><input type="button" name="num2" id="num2" value="2" onClick="mostrar(2)"></td>
+   <td><input type="button" name="num3" id="num3" value="3" onClick="mostrar(3)"></td>
+   <td><input type="button" name="suma" id="suma" value="+" onclick="operacion(1)"></td>
+ </tr>
+ <tr>
+   <td colspan="2"><input type="button" name="nun0" id="nun0" value="0" onClick="mostrar(0)"></td>
+   <td><input type="button" name="punto" id="punto" value="." onClick="mostrar('.')"></td>
+   <td><input type="button" name="igual" id="igual" value="="   onclick="resultado()"></td>
+ </tr>
+ <tr>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+ </tr>
+</table>
+</form> 
+</body>
